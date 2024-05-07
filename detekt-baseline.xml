@@ -1,0 +1,8 @@
+<?xml version="1.0" ?>
+<SmellBaseline>
+  <ManuallySuppressedIssues></ManuallySuppressedIssues>
+  <CurrentIssues>
+    <ID>EmptyFunctionBlock:UiSpikeBackendApplicationTests.kt$UiSpikeBackendApplicationTests${ }</ID>
+    <ID>SpreadOperator:UiSpikeBackendApplication.kt$(*args)</ID>
+  </CurrentIssues>
+</SmellBaseline>
