@@ -1,6 +1,6 @@
-package com.example.uispikebackend.adapter.outbound
+package com.example.uispikebackend.address.adapter.outbound
 
-import com.example.uispikebackend.model.Address
+import com.example.uispikebackend.address.model.Address
 import org.springframework.stereotype.Component
 
 @Component

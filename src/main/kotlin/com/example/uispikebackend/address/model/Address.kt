@@ -1,4 +1,4 @@
-package com.example.uispikebackend.model
+package com.example.uispikebackend.address.model
 
 data class Address(
     var firstname: String,

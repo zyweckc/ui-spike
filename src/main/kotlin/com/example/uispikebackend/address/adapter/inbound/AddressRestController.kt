@@ -1,7 +1,7 @@
-package com.example.uispikebackend.adapter.inbound
+package com.example.uispikebackend.address.adapter.inbound
 
-import com.example.uispikebackend.domain.AddressService
-import com.example.uispikebackend.model.Address
+import com.example.uispikebackend.address.domain.AddressService
+import com.example.uispikebackend.address.model.Address
 import org.springframework.http.MediaType
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.GetMapping

@@ -1,6 +1,6 @@
-package com.example.uispikebackend.domain
+package com.example.uispikebackend.address.domain
 
-import com.example.uispikebackend.adapter.outbound.AddressResourceLoader
+import com.example.uispikebackend.address.adapter.outbound.AddressResourceLoader
 import org.springframework.stereotype.Service
 
 @Service
