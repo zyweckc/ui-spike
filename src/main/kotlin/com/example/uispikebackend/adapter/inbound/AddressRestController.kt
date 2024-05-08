@@ -1,6 +1,6 @@
 package com.example.uispikebackend.adapter.inbound
 
-import com.example.uispikebackend.adapter.outbound.AddressResourceLoader
+import com.example.uispikebackend.domain.AddressService
 import com.example.uispikebackend.model.Address
 import org.springframework.http.MediaType
 import org.springframework.http.ResponseEntity
@@ -12,19 +12,19 @@ import org.springframework.web.bind.annotation.RestController
 @RestController
 @RequestMapping("/api/address")
 class AddressRestController(
-    private val addressResourceLoader: AddressResourceLoader
+    private val addressService: AddressService
 ) {
     @GetMapping(produces = [MediaType.APPLICATION_JSON_VALUE])
     fun getAll(): ResponseEntity<List<Address>> {
         return ResponseEntity.ok(
-            addressResourceLoader.loadAddress()
+            addressService.getAll()
         )
     }
 
     @GetMapping("/{id}", produces = [MediaType.APPLICATION_JSON_VALUE])
     fun getOne(@PathVariable id: Int): ResponseEntity<Address> {
         return ResponseEntity.ok(
-            addressResourceLoader.loadOne()
+            addressService.getOne()
         )
     }
 }
