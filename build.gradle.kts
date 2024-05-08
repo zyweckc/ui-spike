@@ -4,9 +4,17 @@ plugins {
 	id("org.springframework.boot") version "3.2.5"
 	id("io.spring.dependency-management") version "1.1.4"
 	id("io.gitlab.arturbosch.detekt").version("1.23.6")
+	id("com.avast.gradle.docker-compose") version "0.17.6"
 	kotlin("jvm") version "1.9.23"
 	kotlin("plugin.spring") version "1.9.23"
 }
+
+dockerCompose {
+	useComposeFiles = listOf("./infra/docker-compose.yml")
+	stopContainers = false
+}
+
+dockerCompose.isRequiredBy(tasks.named("bootRun"))
 
 group = "com.example"
 version = "0.0.1-SNAPSHOT"
