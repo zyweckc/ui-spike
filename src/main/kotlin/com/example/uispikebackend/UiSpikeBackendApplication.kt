@@ -7,5 +7,7 @@ import org.springframework.boot.runApplication
 class UiSpikeBackendApplication
 
 fun main(args: Array<String>) {
-	runApplication<UiSpikeBackendApplication>(*args)
+    runApplication<UiSpikeBackendApplication>(*args)
 }
+
+
