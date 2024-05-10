@@ -7,9 +7,14 @@ import org.springframework.stereotype.Component
 import java.util.*
 
 private const val SEED = 42781L
+private const val ADDRESS_POOL_SIZE = 100
 
+/**
+ * Fake repository for addresses.
+
+ */
 @Component
-class AddressResourceLoader {
+class AddressRepository {
     private val logger = logger {}
     private val faker: Faker = Faker(Random(SEED))
     private lateinit var addresses: List<Address>
@@ -35,8 +40,7 @@ class AddressResourceLoader {
     private fun initializeAddresses(): List<Address> {
         logger.info { "Initializing addresses" }
         val random = kotlin.random.Random(SEED)
-        @Suppress("MagicNumber") // this is not an issue
-        return List(100) {
+        return List(ADDRESS_POOL_SIZE) {
             val firstName = faker.name().firstName()
             val lastName = faker.name().lastName()
             Address(

@@ -1,13 +1,13 @@
 package com.example.uispikebackend.address.domain
 
-import com.example.uispikebackend.address.adapter.outbound.AddressResourceLoader
+import com.example.uispikebackend.address.adapter.outbound.AddressRepository
 import jakarta.inject.Named
 import java.util.UUID
 
 @Named
 class AddressService(
-    private val addressResourceLoader: AddressResourceLoader
+    private val addressRepository: AddressRepository
 ) {
-    fun getAll() = addressResourceLoader.getAll()
-    fun getById(id: UUID) = addressResourceLoader.getById(id)
+    fun getAll() = addressRepository.getAll()
+    fun getById(id: UUID) = addressRepository.getById(id)
 }
