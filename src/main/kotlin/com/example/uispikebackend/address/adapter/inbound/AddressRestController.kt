@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
+import java.util.*
 
 @RestController
 @RequestMapping("/api/address")
@@ -23,9 +24,9 @@ class AddressRestController(
 
     @Suppress("UnusedParameter") // accepted for now
     @GetMapping("/{id}", produces = [MediaType.APPLICATION_JSON_VALUE])
-    fun getOne(@PathVariable id: Int): ResponseEntity<Address> {
+    fun getOne(@PathVariable id: UUID): ResponseEntity<Address> {
         return ResponseEntity.ok(
-            addressService.getOne()
+            addressService.getById(id)
         )
     }
 }
