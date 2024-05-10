@@ -1,4 +1,4 @@
-package com.example.uispikebackend.security
+package com.example.uispikebackend.config.security
 
 import org.springframework.core.convert.converter.Converter
 import org.springframework.security.core.GrantedAuthority

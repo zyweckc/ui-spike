@@ -1,4 +1,4 @@
-package com.example.uispikebackend.security
+package com.example.uispikebackend.config.security
 
 import org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationConverter
 

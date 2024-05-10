@@ -1,6 +1,6 @@
 package com.example.uispikebackend.config
 
-import com.example.uispikebackend.security.KeycloakJwtAuthenticationConverter
+import com.example.uispikebackend.config.security.KeycloakJwtAuthenticationConverter
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.security.config.annotation.web.builders.HttpSecurity
