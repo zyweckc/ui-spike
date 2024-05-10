@@ -37,10 +37,11 @@ class AddressResourceLoader {
             val firstName = faker.name().firstName()
             val lastName = faker.name().lastName()
             Address(
+                id = UUID.randomUUID(),
                 firstname = firstName,
                 lastname = lastName,
                 age = random.nextInt(from = 19, until = 89),
-                email = "${firstName.first()}.$lastName@" + arrayOf(
+                email = "${firstName.first().lowercase()}.${lastName.lowercase()}@" + arrayOf(
                     "gmail.com",
                     "yahoo.com",
                     "hotmail.com"
