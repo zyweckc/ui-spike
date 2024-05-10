@@ -1,9 +1,9 @@
 package com.example.uispikebackend.address.domain
 
 import com.example.uispikebackend.address.adapter.outbound.AddressResourceLoader
-import org.springframework.stereotype.Service
+import jakarta.inject.Named
 
-@Service
+@Named
 class AddressService(
     private val addressResourceLoader: AddressResourceLoader
 ) {
