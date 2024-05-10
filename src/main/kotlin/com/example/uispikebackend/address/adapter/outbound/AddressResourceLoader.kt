@@ -6,11 +6,12 @@ import net.datafaker.Faker
 import org.springframework.stereotype.Component
 import java.util.*
 
+private const val SEED = 42781L
+
 @Component
 class AddressResourceLoader {
     private val logger = logger {}
-    private val seed = 42781L
-    private val faker: Faker = Faker(Random(seed))
+    private val faker: Faker = Faker(Random(SEED))
     private lateinit var addresses: List<Address>
 
     init {
@@ -30,7 +31,8 @@ class AddressResourceLoader {
 
     private fun initializeAddresses(): List<Address> {
         logger.info { "Initializing addresses" }
-        val random = kotlin.random.Random(seed)
+        val random = kotlin.random.Random(SEED)
+        @Suppress("MagicNumber") // this is not an issue
         return List(100) {
             val firstName = faker.name().firstName()
             val lastName = faker.name().lastName()
@@ -42,7 +44,7 @@ class AddressResourceLoader {
                     "gmail.com",
                     "yahoo.com",
                     "hotmail.com"
-                ).random(kotlin.random.Random(seed))
+                ).random(kotlin.random.Random(SEED))
             )
         }
     }

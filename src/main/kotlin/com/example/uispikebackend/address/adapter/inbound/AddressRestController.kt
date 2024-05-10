@@ -21,6 +21,7 @@ class AddressRestController(
         )
     }
 
+    @Suppress("UnusedParameter") // accepted for now
     @GetMapping("/{id}", produces = [MediaType.APPLICATION_JSON_VALUE])
     fun getOne(@PathVariable id: Int): ResponseEntity<Address> {
         return ResponseEntity.ok(
