@@ -38,6 +38,7 @@ dependencies {
     implementation("io.github.oshai:kotlin-logging-jvm:6.0.9")
     implementation("net.datafaker:datafaker:2.2.2")
     implementation("jakarta.inject:jakarta.inject-api:2.0.1")
+    implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.5.0")
 
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testImplementation("org.springframework.security:spring-security-test")
