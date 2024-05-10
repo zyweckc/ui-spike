@@ -19,14 +19,17 @@ class AddressResourceLoader {
     }
 
 
-    fun loadAddress(): List<Address> {
+    fun getAll(): List<Address> {
         logger.info { "Retrieving all addresses" }
         return addresses
     }
 
-    fun loadOne(): Address {
+    fun getById(id: UUID): Address {
         logger.info { "Retrieving one address" }
-        return addresses.first()
+        return addresses.firstOrNull { it.id == id } ?: run {
+            logger.error { "Requested address not found. [id=$id]" }
+            throw NoSuchElementException("Address not found")
+        }
     }
 
     private fun initializeAddresses(): List<Address> {
