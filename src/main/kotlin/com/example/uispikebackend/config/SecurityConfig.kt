@@ -15,9 +15,16 @@ class SecurityConfig {
     fun configure(http: HttpSecurity): SecurityFilterChain {
         return http.authorizeHttpRequests {
             it
+                // actuators
                 .requestMatchers("/actuator/health").permitAll()
+                // OpenAPI
+                .requestMatchers("/v3/api-docs/**").permitAll()
+                .requestMatchers("/swagger-ui/**").permitAll()
+                .requestMatchers("/swagger-ui.html").permitAll()
+                // domain api
                 .requestMatchers("/api/address/**").hasRole("user")
-                .anyRequest().permitAll()
+                // block all other requests
+                .anyRequest().denyAll()
         }.oauth2ResourceServer { oauth2 ->
             oauth2.jwt { jwt -> jwt.jwtAuthenticationConverter(KeycloakJwtAuthenticationConverter()) }
         }.build()
