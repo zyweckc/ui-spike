@@ -14,7 +14,10 @@ class SecurityConfig {
     @Bean
     fun configure(http: HttpSecurity): SecurityFilterChain {
         return http.authorizeHttpRequests {
-            it.anyRequest().hasRole("user")
+            it
+                .requestMatchers("/actuator/health").permitAll()
+                .requestMatchers("/api/address/**").hasRole("user")
+                .anyRequest().permitAll()
         }.oauth2ResourceServer { oauth2 ->
             oauth2.jwt { jwt -> jwt.jwtAuthenticationConverter(KeycloakJwtAuthenticationConverter()) }
         }.build()
