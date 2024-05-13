@@ -23,6 +23,9 @@ class SecurityConfig {
                 .requestMatchers("/swagger-ui.html").permitAll()
                 // domain api
                 .requestMatchers("/api/address/**").hasRole("user")
+                // web frontend
+                .requestMatchers("/ui/").permitAll()
+                .requestMatchers("/ui/details").permitAll()
                 // block all other requests
                 .anyRequest().denyAll()
         }.oauth2ResourceServer { oauth2 ->
