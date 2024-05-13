@@ -1,0 +1,25 @@
+<html lang="de">
+    <head>
+        <title>Address List</title>
+    </head>
+    <body>
+        <h1>Addresses</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th>Last Name</th>
+                    <th>First Name</th>
+                    <th>Age</th>
+                    <th>E-Mail</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="address : ${addresses}">
+                    <td><a th:href="@{/ui/details(id=${address.id})}" th:text="${address.lastname}"></a></td>
+                    <td th:text="${address.firstname}"></td>
+                    <td th:text="${address.age}">Age</td>
+                    <td th:text="${address.email}"></td>
+            </tbody>
+        </table>
+    </body>
+</html>
