@@ -17,6 +17,7 @@ private const val ADDRESS_POOL_SIZE = 100
 class AddressRepository {
     private val logger = logger {}
     private val faker: Faker = Faker(Random(SEED))
+    private val mailProviders = arrayOf("gmail.com", "yahoo.com", "hotmail.com", "outlook.com", "mail.com")
     private lateinit var addresses: List<Address>
 
     init {
@@ -25,12 +26,12 @@ class AddressRepository {
 
 
     fun getAll(): List<Address> {
-        logger.info { "Retrieving all addresses" }
+        logger.info { "Retrieving all addresses." }
         return addresses
     }
 
     fun getById(id: UUID): Address {
-        logger.info { "Retrieving one address" }
+        logger.info { "Retrieving address by id. [id=$id]" }
         return addresses.firstOrNull { it.id == id } ?: run {
             logger.error { "Requested address not found. [id=$id]" }
             throw NoSuchElementException("Address not found")
@@ -48,11 +49,7 @@ class AddressRepository {
                 firstname = firstName,
                 lastname = lastName,
                 age = random.nextInt(from = 19, until = 89),
-                email = "${firstName.first().lowercase()}.${lastName.lowercase()}@" + arrayOf(
-                    "gmail.com",
-                    "yahoo.com",
-                    "hotmail.com"
-                ).random(kotlin.random.Random(SEED))
+                email = "${firstName.first().lowercase()}.${lastName.lowercase()}@" + mailProviders.random(random)
             )
         }
     }
