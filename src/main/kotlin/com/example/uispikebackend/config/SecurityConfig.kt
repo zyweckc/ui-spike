@@ -45,6 +45,10 @@ class SecurityConfig {
                     .requestMatchers("/v3/api-docs/**").permitAll()
                     .requestMatchers("/swagger-ui/**").permitAll()
                     .requestMatchers("/swagger-ui.html").permitAll()
+                    // static resources
+                    .requestMatchers("/css/**").permitAll()
+                    .requestMatchers("/js/**").permitAll()
+                    .requestMatchers("/fonts/**").permitAll()
                     // web frontend
                     .requestMatchers("/ui/").hasRole(ROLE_USER)
                     .requestMatchers("/ui/details").hasRole(ROLE_USER)
