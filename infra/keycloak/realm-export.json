@@ -677,7 +677,8 @@
       "clientAuthenticatorType": "client-secret",
       "redirectUris": [
         "",
-        "http://localhost:8080/*"
+        "http://localhost:8080/*",
+        "http://localhost:4200/*"
       ],
       "webOrigins": [
         "/*"
@@ -1229,7 +1230,10 @@
           "config": {
             "introspection.token.claim": "true",
             "multivalued": "true",
+            "userinfo.token.claim": "true",
             "user.attribute": "foo",
+            "id.token.claim": "false",
+            "lightweight.claim": "false",
             "access.token.claim": "true",
             "claim.name": "realm_access.roles",
             "jsonType.label": "String"
