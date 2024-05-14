@@ -1,29 +1,33 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
     <title>Address Details</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
 </head>
 <body>
-    <h1>Address Details</h1>
-    <table>
-        <tr>
-            <td>Last Name:</td>
-            <td th:text="${address.lastname}"></td>
-        </tr>
-        <tr>
-            <td>First Name:</td>
-            <td th:text="${address.firstname}"></td>
-        </tr>
-        <tr>
-            <td>Age:</td>
-            <td th:text="${address.age}"></td>
-        </tr>
-        <tr>
-            <td>E-Mail:</td>
-            <td th:text="${address.email}"></td>
-        </tr>
-    </table>
-    <a th:href="@{/ui/}">Back to List</a>
+<div class="container">
+    <h2>Address Record Details</h2>
+    <br/>
+    <div class="row">
+        <div class="col-md-2">Last Name:</div>
+        <div class="col-md-10" th:text="${address.lastname}"></div>
+    </div>
+    <div class="row">
+        <div class="col-md-2">First Name:</div>
+        <div class="col-md-10" th:text="${address.firstname}"></div>
+    </div>
+    <div class="row">
+        <div class="col-md-2">Age:</div>
+        <div class="col-md-10" th:text="${address.age}"></div>
+    </div>
+    <div class="row">
+        <div class="col-md-2">E-Mail:</div>
+        <div class="col-md-10" th:text="${address.email}"></div>
+    </div>
+    <br/>
+    <a class="btn btn-primary" th:href="@{/ui/}">Back to List</a>
+</div>
 </body>
 </html>
