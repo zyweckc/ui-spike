@@ -12,6 +12,9 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority
 import org.springframework.security.core.authority.mapping.GrantedAuthoritiesMapper
 import org.springframework.security.oauth2.core.oidc.user.OidcUserAuthority
 import org.springframework.security.web.SecurityFilterChain
+import org.springframework.web.cors.CorsConfiguration
+import org.springframework.web.cors.CorsConfigurationSource
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource
 
 private const val CLAIM_REALM_ACCESS = "realm_access"
 private const val CLAIM_ROLES = "roles"
@@ -25,8 +28,10 @@ class SecurityConfig {
     @Bean
     fun apiSecurityFilterChain(http: HttpSecurity): SecurityFilterChain {
         return http
-            .csrf { it.disable() }
-            .cors { it.disable() }
+            .cors {}
+            .csrf {
+                it.disable()
+            }
             .securityMatcher("/api/**")
             .authorizeHttpRequests {
                 it
@@ -75,5 +80,16 @@ class SecurityConfig {
             }
             mappedAuthorities
         }
+    }
+
+    @Bean
+    fun corsConfigurationSource(): CorsConfigurationSource {
+        val configuration = CorsConfiguration()
+        configuration.allowedOrigins = listOf("*")
+        configuration.allowedHeaders = listOf("*")
+        configuration.allowedMethods = listOf("*")
+        val source = UrlBasedCorsConfigurationSource()
+        source.registerCorsConfiguration("/api/**", configuration)
+        return source
     }
 }
