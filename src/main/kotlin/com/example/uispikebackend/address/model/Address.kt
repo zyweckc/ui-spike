@@ -4,8 +4,8 @@ import java.util.*
 
 data class Address(
     val id: UUID,
-    var firstname: String,
-    var lastname: String,
-    var age: Int,
-    var email: String,
+    val firstname: String,
+    val lastname: String,
+    val age: Int,
+    val email: String,
 )
