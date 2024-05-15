@@ -2231,5 +2231,36 @@
   },
   "clientPolicies": {
     "policies": []
-  }
+  },
+  "users": [
+    {
+      "createdTimestamp": 1714557600,
+      "username": "test-user",
+      "email": "test-user@gmail.com",
+      "emailVerified": true,
+      "firstName": "test",
+      "lastName": "user",
+      "enabled": true,
+      "credentials": [
+        {
+          "type": "password",
+          "value": "password",
+          "temporary": false
+        }
+      ],
+      "clientRoles": {
+        "account": [
+          "manage-account",
+          "manage-account-links",
+          "view-profile"
+        ]
+      },
+      "realmRoles": [
+        "offline_access",
+        "default-roles-ui-spike",
+        "uma_authorization",
+        "user"
+      ]
+    }
+  ]
 }
