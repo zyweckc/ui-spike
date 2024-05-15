@@ -4,6 +4,8 @@ import com.example.uispikebackend.config.security.KeycloakJwtAuthenticationConve
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
 import org.springframework.core.annotation.Order
+import org.springframework.http.HttpHeaders
+import org.springframework.http.MediaType
 import org.springframework.security.config.Customizer
 import org.springframework.security.config.annotation.web.builders.HttpSecurity
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity
@@ -28,15 +30,18 @@ class SecurityConfig {
     @Bean
     fun apiSecurityFilterChain(http: HttpSecurity): SecurityFilterChain {
         return http
-            .cors {}
+            .cors { }
             .csrf {
                 it.disable()
             }
-            .securityMatcher("/api/**")
+            .securityMatcher {
+                it.getHeader(HttpHeaders.ACCEPT) == MediaType.APPLICATION_JSON_VALUE
+            }
             .authorizeHttpRequests {
-                it
-                    .requestMatchers("/api/address/**").hasRole(ROLE_USER)
-            }.oauth2ResourceServer { oauth2 ->
+                it.anyRequest().hasRole(ROLE_USER)
+                // it.requestMatchers("/api/address/**").hasRole(ROLE_USER) // scheint nicht zu gehen - 403 mit postman
+            }
+            .oauth2ResourceServer { oauth2 ->
                 oauth2.jwt { jwt -> jwt.jwtAuthenticationConverter(KeycloakJwtAuthenticationConverter()) }
             }.build()
     }
@@ -44,6 +49,9 @@ class SecurityConfig {
     @Bean
     fun webSecurityFilterChain(http: HttpSecurity): SecurityFilterChain {
         return http
+            .securityMatcher {
+                !it.getHeader(HttpHeaders.ACCEPT).contains(MediaType.APPLICATION_JSON_VALUE)
+            }
             .authorizeHttpRequests {
                 it
                     // actuators
@@ -56,11 +64,8 @@ class SecurityConfig {
                     .requestMatchers("/css/**").permitAll()
                     .requestMatchers("/js/**").permitAll()
                     .requestMatchers("/fonts/**").permitAll()
-                    // web frontend
-                    .requestMatchers("/ui/").hasRole(ROLE_USER)
-                    .requestMatchers("/ui/details").hasRole(ROLE_USER)
-                    // block all other requests
-                    .anyRequest().denyAll()
+                    .requestMatchers("/api/address/**").hasRole(ROLE_USER)
+                // block all other requests
             }.oauth2Login(Customizer.withDefaults()).build()
     }
 
