@@ -44,6 +44,8 @@ dependencies {
 
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testImplementation("org.springframework.security:spring-security-test")
+    implementation("org.testcontainers:testcontainers:1.19.8")
+    implementation("com.github.dasniko:testcontainers-keycloak:3.3.1")
 
     developmentOnly("org.springframework.boot:spring-boot-devtools")
 }
