@@ -44,8 +44,11 @@ dependencies {
 
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testImplementation("org.springframework.security:spring-security-test")
-    implementation("org.testcontainers:testcontainers:1.19.8")
-    implementation("com.github.dasniko:testcontainers-keycloak:3.3.1")
+    testImplementation("org.testcontainers:testcontainers:1.19.8")
+    testImplementation("org.testcontainers:junit-jupiter:1.19.8")
+    testImplementation("com.github.dasniko:testcontainers-keycloak:3.3.1")
+    testImplementation("org.junit.jupiter:junit-jupiter-api:5.10.2")
+    testImplementation("org.junit.jupiter:junit-jupiter-engine:5.10.2")
 
     developmentOnly("org.springframework.boot:spring-boot-devtools")
 }
