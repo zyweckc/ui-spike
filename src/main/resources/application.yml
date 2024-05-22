@@ -1,0 +1,34 @@
+spring:
+  application:
+    name: ui-spike-backend
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          jwk-set-uri: http://localhost:8000/realms/ui-spike/protocol/openid-connect/certs
+      client:
+        registration:
+          frontend:
+            client-id: frontend
+            provider: keycloak
+            authorization-grant-type: authorization_code
+            scope: openid
+        provider:
+          keycloak:
+            issuer-uri: http://localhost:8000/realms/ui-spike
+            user-name-attribute: preferred_username
+
+
+# server configuration
+server:
+  servlet:
+    context-path: /ui-spike-backend
+
+# openapi configuration
+open-api-config:
+  auth-server-url: http://localhost:8000/
+  realm: ui-spike
+springdoc:
+  swagger-ui:
+    oauth:
+      client-id: frontend
